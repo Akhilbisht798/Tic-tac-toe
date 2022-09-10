@@ -11,6 +11,7 @@ html, body {
 
 :root {
     --OX-font: 'Raleway', sans-serif;
+    --roboto: 'Roboto', sans-serif;
 }
 
 .container {
@@ -65,11 +66,12 @@ html, body {
 } */
 
 #OutroScreen.active {
-    position: fixed;
+    position: absolute;
     left: 0;
-    right: 0;
     top: 0;
-    bottom: 0;
+    right: 0;
+    height: 450px;
+    z-index: 4;
 }
 
 #replay {
@@ -78,10 +80,16 @@ html, body {
 
 #replay.active {
     display: flex;
+    flex-direction: column;
+    gap: 20px;
     align-items: center;
     justify-content: center;
     padding: 20px;
     z-index: 10;
+}
+.EndText {
+    font-family: var(--roboto);
+    font-size: large;
 }
 
 .replaybtn {

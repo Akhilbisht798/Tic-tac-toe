@@ -43,6 +43,7 @@ const DisplayController = (() => {
     let feild = document.querySelectorAll(".feild");
     let OutroScreen = document.getElementById("OutroScreen");
     let replay = document.getElementById("replay");
+    let EndText = document.querySelector(".EndText");
 
     const UpdateBoard = () => {
         for (let i = 0; i < feild.length; i++) {
@@ -64,8 +65,8 @@ const DisplayController = (() => {
                     }
                 }
                 if (round === 9) {
-                    console.log ("Tie!");
-                    GameOver();
+                    let text = "Tie Game!";
+                    GameOver(text);
                 }
                 if (round % 2 == 0) {
                     name = "O";
@@ -75,8 +76,8 @@ const DisplayController = (() => {
                 }
                 ChangeAndUpdate(i, name);
                 if (winCondition(name)) {
-                    console.log(name + " Win the Game");
-                    GameOver();
+                    let text = name + " Win the Game";
+                    GameOver(text);
                 }
             })
 
@@ -121,12 +122,18 @@ const DisplayController = (() => {
     }
 
     const GameOver = (text) => {
-        OutroScreen.classList.add("active");
         replay.classList.add("active");
+        OutroScreen.classList.add("active");
+        EndText.innerHTML = text;
     }
 
+    
     return { UpdateBoard, GameLoop , ChangeAndUpdate, winCondition };
-
+    
 })();
 
+
+const refresh = () => {
+    window.location.reload()
+}
 DisplayController.GameLoop();
